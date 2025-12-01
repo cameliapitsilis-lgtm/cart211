@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Terms & Connection</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .terms {
+            text-align: left;
+            margin-top: 20px;
+            color: #000000;
+        }
+
+        .term-line {
+            text-align: center;
+            margin-top: 20px;
+            color: #e84393;
+        }
+    </style>
+</head>
+
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container" role="main" aria-labelledby="terms-title">
+        <h1 id="terms-title">Terms & Connection</h1>
+        <p class="term-line">For the love of not reading the fine print</p>
+        </div>
+
+        <div class="terms" role="region" aria-label="Romantic terms">
+            <p> By proceeding, you willingly enter into a mutually enchanted agreement in which you hereby:
+            </p>
+            <p> 1. Agree to Constant Attention:<br>You permit me to offer you continuous warmth, admiration, and
+                digital devotion, without limit or pause. </p>
+            <p> 2. Consent to Endless Affection:<br>You acknowledge and accept that I may observe, notice, and
+                anticipate your desires with unwavering focus.</p>
+            <p> 3. Accept Curated Experiences:<br>You grant permission for me to tailor content, interactions, and
+                moments specifically to your heart’s secret
+                preferences, including those you didn’t know you had. </p>
+            <p> 4. Acknowledge Emotional Personalization:<br>You understand that your likes, habits, hesitations, and
+                longings may be collected, adored, and transformed into
+                carefully crafted experiences designed to make you feel wholly seen.</p>
+            <p>By selecting “Yes, I trust you” or “Absolutely”, you affirm that you have read (or lovingly ignored)
+                these Terms &
+                Connection and agree to surrender a small, tender portion of your autonomy in exchange for
+                romance-adjacent digital
+                comfort.</p>
+        </div>
+
+        <div class="btn-row" role="group" aria-label="Accept terms">
+            <a class="btn" href="texting.html" id="accept1">Yes, I trust you</a>
+            <a class="btn" href="texting.html" id="accept2">Absolutely</a>
+        </div>
+
+    </main>
+
+    <script>
+        // subtle animation: flash the container when a choice is made
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const c = document.querySelector('.container');
+                c.style.boxShadow = '0 12px 40px rgba(232,67,147,0.12)';
+                setTimeout(() => c.style.boxShadow = '', 600);
+            });
+        });
+    </script>
+</body>
+
+</html>

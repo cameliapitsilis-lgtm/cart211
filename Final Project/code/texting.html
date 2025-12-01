@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Texting Phase</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Chat window styling */
+        .container {
+            max-width: 400px;
+            width: 100%;
+            min-width: 200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .chat-box {
+            width: 100%;
+            max-width: 100%;
+            height: 55vh;
+            background: #fff0f6;
+            border-radius: 16px;
+            padding: 20px;
+            overflow-y: auto;
+            border: 1px solid rgba(232, 67, 147, 0.15);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            word-wrap: break-word;
+            box-sizing: border-box;
+        }
+
+        .msg {
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            border-radius: 16px;
+            max-width: 80%;
+            /* prevents messages from stretching container */
+            word-wrap: break-word;
+            line-height: 1.4rem;
+            animation: fadeIn .4s ease;
+        }
+
+        .bot {
+            background: #f9d1e4;
+            align-self: flex-start;
+        }
+
+        .user {
+            background: #e84393;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #e84393;
+            font-size: 1rem;
+        }
+
+        .next-btn {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container" role="main" aria-labelledby="chat-title">
+        <h1 id="chat-title">Let's Chat 💬</h1>
+
+        <div id="chatBox" class="chat-box" role="log" aria-live="polite"></div>
+
+        <div class="input-row">
+            <input id="userInput" type="text" placeholder="Type your reply..." autocomplete="off" />
+            <button class="btn" id="sendBtn">Send</button>
+        </div>
+
+        <a href="social.html" class="btn next-btn" id="nextBtn">Continue</a>
+    </main>
+
+    <script>
+        const chatBox = document.getElementById("chatBox");
+        const userInput = document.getElementById("userInput");
+        const sendBtn = document.getElementById("sendBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        // Questions
+        const questions = [
+            "What’s your favorite color?",
+            "Do you like dogs or cats?",
+            "Are you a morning person or a night owl?",
+            "What was the last thing that made you smile?",
+            "What’s something you secretly adore?"
+        ];
+
+        // Bot reactions after user answers
+        const reactions = [
+            "Wow… that color really suits your aura. I’m keeping that in mind.",
+            "Ohh me too!",
+            "Really that's interesting… I’ll remember that about your rhythm.",
+            "hahah aww, I like that you smile at things like that ☺️",
+            "Thank you for sharing that secret with me 🙈"
+        ];
+
+        let step = 0;
+
+        function botMessage(text) {
+            const msg = document.createElement("div");
+            msg.className = "msg bot";
+            msg.textContent = text;
+            chatBox.appendChild(msg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function userMessage(text) {
+            const msg = document.createElement("div");
+            msg.className = "msg user";
+            msg.textContent = text;
+            chatBox.appendChild(msg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Start conversation
+        botMessage("Hi!I would love to get to know you ☺️");
+        setTimeout(() => botMessage(questions[step]), 1200);
+
+        sendBtn.addEventListener("click", send);
+        userInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") send();
+        });
+
+        function send() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            userMessage(text);
+            userInput.value = "";
+
+            // Save current step for reaction
+            const currentStep = step;
+
+            // Bot reacts
+            setTimeout(() => {
+                botMessage(reactions[currentStep]);
+            }, 500);
+
+            step++; // increment step after reaction
+
+            // Ask next question or finish
+            if (step < questions.length) {
+                setTimeout(() => {
+                    botMessage(questions[step]);
+                }, 1400);
+            } else {
+                setTimeout(() => {
+                    botMessage("I love learning about you 💖");
+
+                    // End conversation
+                    userInput.disabled = true;        // disable typing
+                    sendBtn.disabled = true;          // disable send button
+                    nextBtn.style.display = "inline-block"; // show next button
+
+                }, 1400);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

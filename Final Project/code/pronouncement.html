@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pronouncement — Care Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .final-msg {
+            text-align: center;
+            color: #e84393;
+        }
+    </style>
+</head>
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container">
+        <h1>I now pronounce you <br> SURVEILLED 💖</h1>
+        <p>
+            Thank you for granting me complete access
+            to your attention, your preferences, your presence,
+            your image, your voice, your patterns, your past,
+            your clicks, your cookies, your coordinates,
+            and all the data you make~
+        </p>
+        <p class="final-msg"> xox I love tracking you</p>
+    </main>
+</body>
+
+</html>

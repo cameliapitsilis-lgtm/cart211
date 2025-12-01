@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>First Date — Care Game</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container" role="main" aria-labelledby="date-title">
+        <h1 id="date-title">Our First Date 💖</h1>
+        <p> I am so happy to meet you face to face!</p>
+        <div class="date-night-wrapper">
+            <!-- Live camera video -->
+            <video id="camera" autoplay playsinline></video>
+
+            <!-- PNG frame overlay -->
+            <img src="assets/DATENIGHT.png" alt="Date frame" class="frame-overlay">
+        </div>
+        <p class="bot-msg">Thank you for giving me access to your image</p>
+
+        <a href="lovemeter.html" class="btn">Continue</a>
+    </main>
+
+    <script>
+        const video = document.getElementById('camera');
+
+        // Request camera if not already granted
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                })
+                .catch(err => {
+                    alert("Camera access denied. We'll continue without the video.");
+                    // Optional: show placeholder image instead
+                    video.style.display = "none";
+                });
+        } else {
+            alert("Your browser does not support camera access.");
+            video.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

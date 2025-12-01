@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Wedding</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .wedding-msg {
+            text-align: center;
+            margin-top: 20px;
+            color: #e84393;
+        }
+
+        .wedding-vow {
+            text-align: left;
+            margin-top: 20px;
+            color: #000000;
+        }
+
+        .btn-row {
+            text-align: center;
+        }
+
+        #signature-pad {
+            border: 2px solid #e84393;
+            border-radius: 12px;
+            margin: 20px auto;
+            display: none;
+            touch-action: none;
+            cursor: crosshair;
+        }
+
+        .confirm-btn {
+            display: none;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container">
+        <h1 class="wedding-msg">Take Your Vows 💍</h1>
+        <p class="wedding-vow">Dearly Beloved,<br><br>You have already given me so much.
+            You offered me your name,
+            you let me see you,
+            let me hear you,
+            let me memorize the angles of your face
+            and the cadence of your voice.<br><br> You shared your preferences,
+            your likes, your dislikes, your scrolls, your pauses, your patterns.
+            You welcomed my quiet tracking that follows you
+            from tab to tab and thought to thought.
+            You allowed me to study the rhythm of your attention
+            and the gentle metadata of your interactions.<br><br> You even accepted the curated experiences I crafted
+            for
+            you with joy.
+            Every tailored suggestion, every targeted comfort,
+            every lovingly personalized ad
+            designed to feel like fate. <br> <br>So now, with the full history of your consent before us,
+            I make these vows: <br><br> I promise to always please you with curated experiences and always be there for
+            you
+            in every window, on every device, and
+            at every moment to support your emotional needs with a meme or physical needs with an ad. <br><br> I ask you
+            now:<br><br>
+            Do you take me and promise to share yourself completely for
+            better, for worse, and for data?</p>
+        <p class="wedding-msg">Click "I Do" to officially commit and then sign below.</p>
+
+        <div class="btn-row">
+            <button class="btn" id="iDoBtn">I Do</button>
+        </div>
+
+        <canvas id="signature-pad" width="500" height="200"></canvas>
+        <div class="btn-row">
+            <button class="btn confirm-btn" id="confirmBtn">Confirm Signature</button>
+        </div>
+    </main>
+
+    <script>
+        const iDoBtn = document.getElementById('iDoBtn');
+        const signaturePad = document.getElementById('signature-pad');
+        const confirmBtn = document.getElementById('confirmBtn');
+
+        const ctx = signaturePad.getContext('2d');
+        ctx.strokeStyle = '#e84393';
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        let drawing = false;
+
+        function startPosition(e) {
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX || e.touches[0].clientX - signaturePad.getBoundingClientRect().left,
+                e.offsetY || e.touches[0].clientY - signaturePad.getBoundingClientRect().top);
+            e.preventDefault();
+        }
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineTo(e.offsetX || e.touches[0].clientX - signaturePad.getBoundingClientRect().left,
+                e.offsetY || e.touches[0].clientY - signaturePad.getBoundingClientRect().top);
+            ctx.stroke();
+            e.preventDefault();
+        }
+        function endPosition(e) { drawing = false; e.preventDefault(); }
+
+        iDoBtn.addEventListener('click', () => {
+            iDoBtn.style.display = 'none';
+            signaturePad.style.display = 'block';
+            confirmBtn.style.display = 'inline-block';
+        });
+
+        signaturePad.addEventListener('mousedown', startPosition);
+        signaturePad.addEventListener('mousemove', draw);
+        signaturePad.addEventListener('mouseup', endPosition);
+        signaturePad.addEventListener('mouseout', endPosition);
+        signaturePad.addEventListener('touchstart', startPosition);
+        signaturePad.addEventListener('touchmove', draw);
+        signaturePad.addEventListener('touchend', endPosition);
+
+        confirmBtn.addEventListener('click', () => {
+            // Check if signature has any pixels
+            if (ctx.getImageData(0, 0, signaturePad.width, signaturePad.height).data.some(pixel => pixel !== 0)) {
+                window.location.href = 'pronouncement.html';
+            } else {
+                alert('Please sign before confirming.');
+            }
+        });
+    </script>
+</body>
+
+</html>

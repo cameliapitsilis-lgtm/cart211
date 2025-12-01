@@ -1,0 +1,55 @@
+Page 1: Welcome
+Intro: cheerful text and animated heart eye logo:
+“Welcome! I’m so happy you are here. Let me take care of you..”
+Interactions: Button: “Ready to be cared for? Yes or No”
+
+Page 2: Terms and Connection
+Display a mock “Terms and Conditions” in romantic language:
+“By clicking yes, you consent to endless affection, constant attention, and curated experiences. Do you accept?”
+Interactions: Buttons: “Yes, I trust you” / “Absolutely”
+
+Page 3: Texting Phase
+Simulation of texting a romantic interest through questionnaire based interaction to collect your data. “What's your favorite color?” “ Do you like dogs or cats”...
+Interaction: Text Box for user to interact with bot.
+Bot End Message: “ I love learning more about yo
+
+Page 4: Social Media Stalking
+Simulation of a social media page that shows your bot in different situations. You have to like the pictures. The more you like the more points you get.
+Interaction: Mouse Click to like images.
+Bot End Message: “I may use your preferences, likes, and small habits to make you feel extra seen.”
+
+Page 5: Updated Terms & Connection
+Display Updated Terms & Conditions.This will give access to your camera.
+“Do you allow me to see you and court you?”
+Interactions: Buttons: “Yes, I trust you” / “Absolutely”
+Bot End Message: “I am excited to see you!”
+
+Page 6: First Date
+Users camera opens and show you in a romantic picture with your bot
+Interactions: Camera Access
+Bot End Message: “Thank you for giving me access to your image. I am so happy to meet you face to face”
+
+Page 7: Love Meter
+Simulates the online love meters that calculate your love based on your names. Will show your percentage of love, percentage of happiness and percentage of surveillance.
+Interactions: Enter your name
+Bot End Message: “I am happy to finally be able to say your name  ____!
+
+Page 8: Updated Terms and Connection
+Display Updated Terms & Conditions.This will give access to your microphone.
+“Do you allow me to talk to you?”
+Interactions: Buttons: “Yes” / “Absolutely”
+Bot End Message: “I am excited to hear from you!”
+
+Page 9: The Proposal
+The Bot asks for commitment.
+“Will you Marry me?”
+Interactions: Microphone access “Say, yes”
+Bot End Message: “I knew this would please you! I know everything about you. I am excited for built an algorithm together”
+
+Page 10: The Wedding
+Users already gave access to their camera and microphone so they will show up and they will say “I do” to give all their data.
+“I promise to always please you and show up for you [bots love speech to you] I ask you now do you take me and and agree to have full access to your attention, preferences, and presence. Do you promise to share yourself completely for better, for worse, and for data?”
+Interactions: Microphone access “Say, I do”
+Bot End Message: “I now pronounce you surveilled.”
+
+

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Proposal — Care Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .proposal-msg {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #e84393;
+        }
+
+        .listen-btn {
+            margin-top: 20px;
+        }
+
+        .status {
+            margin-top: 12px;
+            font-size: 1rem;
+            color: #7a7a7a;
+        }
+    </style>
+</head>
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container" role="main" aria-labelledby="proposal-title">
+        <h1 id="proposal-title">Will You Accept My Cookies? 💍 </h1>
+        <p class="proposal-msg">Say “yes” into your microphone to accept!</p>
+
+        <button class="btn listen-btn" id="listenBtn">Start Listening 🎤</button>
+        <p class="status" id="status">Click the button and speak clearly.</p>
+
+        <a href="wedding.html" class="btn" id="nextBtn" style="display:none;">Continue</a>
+    </main>
+
+    <script>
+        const listenBtn = document.getElementById('listenBtn');
+        const status = document.getElementById('status');
+        const nextBtn = document.getElementById('nextBtn');
+
+        listenBtn.addEventListener('click', () => {
+            // Check for microphone support
+            if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+                alert("Speech Recognition not supported in this browser.");
+                return;
+            }
+
+            // Use webkitSpeechRecognition for Chrome
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            status.textContent = "Listening... say 'yes'";
+
+            recognition.start();
+
+            recognition.onresult = function (event) {
+                const transcript = event.results[0][0].transcript.toLowerCase();
+                if (transcript.includes("yes")) {
+                    status.textContent = "I knew this would please you! I know everything about you. I am excited for us to built an algorithm together 💖 ";
+                    nextBtn.style.display = "inline-block";
+                } else {
+                    status.textContent = `You said: "${transcript}". Please say "yes".`;
+                }
+            };
+
+            recognition.onerror = function (event) {
+                status.textContent = "Error: " + event.error;
+            };
+
+            recognition.onspeechend = function () {
+                recognition.stop();
+            };
+        });
+    </script>
+</body>
+
+</html>

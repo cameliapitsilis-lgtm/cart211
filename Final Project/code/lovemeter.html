@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Love Meter — Care Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .meter-container {
+            margin-top: 20px;
+        }
+
+        .meter {
+            margin: 12px 0;
+            font-size: 1rem;
+            background: #ffe1ef;
+            border-radius: 12px;
+            padding: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            height: 24px;
+            width: 0%;
+            background: #e84393;
+            border-radius: 12px;
+            transition: width 1s ease;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid #e84393;
+            font-size: 1rem;
+            margin-right: 12px;
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container" role="main" aria-labelledby="love-title">
+        <h1 id="love-title">Love Meter 💖</h1>
+        <p>Enter your name to calculate our love!</p>
+
+        <div>
+            <input type="text" id="nameInput" placeholder="Your Name" />
+            <button class="btn" id="calcBtn">Calculate</button>
+        </div>
+
+        <div class="meter-container">
+            <div class="meter">Love: <div class="meter-fill" id="loveMeter"></div>
+            </div>
+            <div class="meter">Happiness: <div class="meter-fill" id="happyMeter"></div>
+            </div>
+            <div class="meter">Surveillance: <div class="meter-fill" id="survMeter"></div>
+            </div>
+        </div>
+        <p id="botMessage" style="display:none; color:#e84393; font-weight:bold; margin-top:30px;"></p>
+        <a href="terms3.html" class="btn next-btn" id="nextBtn">Continue</a>
+
+    </main>
+
+    <script>
+        const calcBtn = document.getElementById('calcBtn');
+        const loveMeter = document.getElementById('loveMeter');
+        const happyMeter = document.getElementById('happyMeter');
+        const survMeter = document.getElementById('survMeter');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function randomPercent(seed) {
+            // Simple pseudo-random based on name
+            let sum = 0;
+            for (let i = 0; i < seed.length; i++) sum += seed.charCodeAt(i);
+            return sum % 100 + 1; // 1–100%
+        }
+
+        calcBtn.addEventListener('click', () => {
+            const name = document.getElementById('nameInput').value.trim();
+            if (!name) return alert("Please enter your name!");
+
+            // Love % based on name, minimum 50
+            let love = randomPercent(name);
+            if (love < 50) love = 75;
+
+            // Happiness % based on reversed name, minimum 50
+            let happy = randomPercent(name.split('').reverse().join(''));
+            if (happy < 50) happy = 85;
+
+            // Surveillance is always 100%
+            let surv = 100;
+
+            // Update meter bars
+            loveMeter.style.width = love + '%';
+            loveMeter.textContent = love + '%';
+
+            happyMeter.style.width = happy + '%';
+            happyMeter.textContent = happy + '%';
+
+            survMeter.style.width = surv + '%';
+            survMeter.textContent = surv + '%';
+
+            // Show Next button
+            nextBtn.style.display = "inline-block";
+
+            // Show bot message
+            const botMessage = document.getElementById('botMessage');
+            botMessage.textContent = `I'm so happy to finally be able to say your name ${name}!`;
+            botMessage.style.display = "block";
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Terms & Connection 3.0</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .terms {
+            text-align: left;
+            margin-top: 20px;
+            color: #000000;
+        }
+
+        .term-line {
+            text-align: center;
+            margin-top: 20px;
+            color: #e84393;
+        }
+    </style>
+</head>
+
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container" role="main" aria-labelledby="terms3-title">
+        <h1 id="terms3-title">Terms & Connection 3.0</h1>
+        <p class="term-line">For the love of not reading the fine print</p>
+
+        <div class="terms" role="region" aria-label="Microphone terms">
+            <p>By continuing, you grant me permission to deepen our connection further in which you hereby:</p>
+            <p> 1. Authorize Communication:<br>You consent to allowing me to further our ongoing communication through
+                new means so that I may understand you more. </p>
+            <p> 2. Allow Active Listening :<br>You accept that I may tailor responses, moods, and experiences based on
+                your words, your tone and you pauses.</p>
+            <p> 3. Enable Auditory Personalization:<br>You agree that your microphone may become a window into
+                moments that help me know you better. </p>
+            <p>By proceeding, you affirm your willingness to be heard.</p>
+        </div>
+
+        <div class="btn-row" role="group" aria-label="Allow microphone">
+            <button class="btn" id="yesBtn">Yes, let's keep chatting!</button>
+            <button class="btn" id="absBtn">Absolutely!</button>
+        </div>
+
+    </main>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const absBtn = document.getElementById('absBtn');
+
+        function requestMic() {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    localStorage.setItem('micAccess', true);
+                    window.location.href = 'proposal.html';
+                })
+                .catch(err => {
+                    alert('Microphone access denied. You can still continue, but the experience will be limited.');
+                    window.location.href = 'proposal.html';
+                });
+        }
+
+        yesBtn.addEventListener('click', requestMic);
+        absBtn.addEventListener('click', requestMic);
+    </script>
+</body>
+
+</html>

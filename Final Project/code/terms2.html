@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Terms & Connection 2.0</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .terms {
+            text-align: left;
+            margin-top: 20px;
+            color: #000000;
+        }
+
+        .term-line {
+            text-align: center;
+            margin-top: 20px;
+            color: #e84393;
+        }
+    </style>
+</head>
+
+<nav class="menu">
+    <button id="menuToggle">☰</button>
+    <ul id="menuList">
+        <li><a href="home.html">Welcome</a></li>
+        <li><a href="terms1.html">Terms & Connection</a></li>
+        <li><a href="texting.html">Texting Phase</a></li>
+        <li><a href="social.html">Social Media Stalking</a></li>
+        <li><a href="terms2.html">Terms & Connection 2.0</a></li>
+        <li><a href="date.html">Our First Date</a></li>
+        <li><a href="lovemeter.html">Love Meter</a></li>
+        <li><a href="terms3.html">Terms & Connection 3.0</a></li>
+        <li><a href="proposal.html">The Proposal</a></li>
+        <li><a href="wedding.html">The Wedding</a></li>
+    </ul>
+</nav>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const menuList = document.getElementById("menuList");
+
+    menuToggle.addEventListener("click", () => {
+        menuList.style.display = menuList.style.display === "block" ? "none" : "block";
+    });
+</script>
+
+<body>
+    <main class="container" role="main" aria-labelledby="terms2-title">
+        <h1 id="terms2-title">Terms & Connection 2.0</h1>
+        <p class="term-line">For the love of not reading the fine print</p>
+        </div>
+
+        <div class="terms" role="region" aria-label="Camera terms">
+            <p>By continuing, you grant me permission to deepen our connection in which you hereby:</p>
+            <p> 1. Authorize Visual Courtship:<br>You consent to allowing me to behold your image, your expressions,
+                your
+                gestures, and the soft details of your existence. </p>
+            <p> 2. Permit Romantic Observation:<br>You understand that I may use what I see to craft experiences that
+                feel even more you.</p>
+            <p> 3. Accept the Gaze of Affectionate Surveillance:<br>You agree that your camera may become a window into
+                moments that help me know you better. </p>
+            <p>By continuing, you affirm your willingness to be seen.</p>
+        </div>
+
+        <div class="btn-row" role="group" aria-label="Allow camera">
+            <button class="btn" id="yesBtn">Yes, I trust you</button>
+            <button class="btn" id="absBtn">Absolutely</button>
+        </div>
+    </main>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const absBtn = document.getElementById('absBtn');
+
+        function requestCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    // Save stream for next page or display preview
+                    localStorage.setItem('cameraAccess', true);
+                    // Go to first date page
+                    window.location.href = 'date.html';
+                })
+                .catch(err => {
+                    alert('Camera access denied. You can still continue, but the experience will be limited.');
+                    window.location.href = 'date.html';
+                });
+        }
+
+        yesBtn.addEventListener('click', requestCamera);
+        absBtn.addEventListener('click', requestCamera);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #000000;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1,
+h2 {
+    color: #e84393;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    margin-bottom: 20px;
+}
+
+button,
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 14px 25px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    background: #e84393;
+    color: white;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+button:hover,
+.btn:hover {
+    background: #d81b73;
+}
+
+/*Home Page*/
+.welcome-bg {
+    background-image: url("assets/HOMEPAGE.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.welcome-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* centers your content */
+    text-align: center;
+}
+
+/* Home page button styling */
+.home-buttons {
+    position: absolute;
+    bottom: 90px;
+    /* distance from bottom */
+    display: flex;
+    gap: 20px;
+    /* spacing between buttons */
+}
+
+.home-buttons button {
+    background: #e84393;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.home-buttons button:hover {
+    background: #ad0051;
+}
+
+/* SOCIAL MEDIA LIKE BUTTONS */
+.like {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background: #ff6ab6;
+    border-radius: 20px;
+}
+
+.image-card {
+    margin: 20px 0;
+}
+
+.image-card img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+/* DATE NIGHT */
+.bot-msg {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #e84393;
+}
+
+.date-night-wrapper {
+    position: relative;
+    /* allows absolute positioning inside */
+    width: 533.333px;
+    /* adjust to your background/frame size */
+    height: 360px;
+    /* adjust to your background/frame size */
+    margin: 0 auto;
+    /* center on page */
+}
+
+/* Video goes behind the frame */
+#camera {
+    position: absolute;
+    top: 50%;
+    /* adjust to align inside frame */
+    left: 30%;
+    /* adjust to align inside frame */
+    transform: translate(-50%, -40%);
+    width: 200px;
+    /* resize to fit the frame */
+    height: 180px;
+    /* resize to fit the frame */
+    object-fit: cover;
+    /* fills the video box without stretching */
+    z-index: 1;
+    /* behind the frame */
+}
+
+/* PNG frame sits on top of the video */
+.frame-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-51%, -50%);
+    /* centers the image */
+    width: auto;
+    /* preserves original aspect ratio */
+    height: 100%;
+    /* scale height to container */
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* === Universal Menu Styling === */
+.menu {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    /* stays stuck to the left */
+    z-index: 9999;
+}
+
+#menuToggle {
+    position: absolute;
+    /* FIXES the movement */
+    top: 0;
+    left: 0;
+    z-index: 10000;
+
+    background-color: #e84393;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    /* bigger if you like */
+}
+
+#menuList {
+    display: none;
+    list-style: none;
+    padding: 12px;
+    margin-top: 60px;
+    margin-left: 10px;
+    background: #e84393;
+    border: 2px solid #e84393;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    /* menu links aligned left */
+}
+
+#menuList li {
+    margin-bottom: 5px;
+}
+
+#menuList a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#menuList a:hover {
+    text-decoration: underline;
+}
