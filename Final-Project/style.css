@@ -1,4 +1,4 @@
-/* ===== GLOBAL ===== */
+/* GLOBAL */
 * {
     margin: 0;
     padding: 0;
@@ -58,7 +58,7 @@ button:hover,
     background: #d81b73;
 }
 
-/*Home Page*/
+/* HOME PAGE */
 .welcome-bg {
     background-image: url("assets/HOMEPAGE.png");
     background-size: cover;
@@ -76,14 +76,11 @@ button:hover,
     text-align: center;
 }
 
-/* Home page button styling */
 .home-buttons {
     position: absolute;
     bottom: 90px;
-    /* distance from bottom */
     display: flex;
     gap: 20px;
-    /* spacing between buttons */
 }
 
 .home-buttons button {
@@ -100,7 +97,20 @@ button:hover,
     background: #ad0051;
 }
 
-/* SOCIAL MEDIA LIKE BUTTONS */
+/* TERMS & CONNECTION */
+.terms {
+    text-align: left;
+    margin-top: 20px;
+    color: #000000;
+}
+
+.term-line {
+    text-align: center;
+    margin-top: 20px;
+    color: #e84393;
+}
+
+/* SOCIAL MEDIA */
 .like {
     padding: 10px 15px;
     font-size: 1rem;
@@ -118,6 +128,52 @@ button:hover,
     margin-bottom: 10px;
 }
 
+.social-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.image-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.image-card img {
+    width: 100%;
+    display: block;
+}
+
+.like-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 5px;
+    background: #ff6ab6;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.like-btn:hover {
+    transform: scale(1.1);
+}
+
+.overlay-text {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 1rem;
+    pointer-events: none;
+    /* allows clicking the button normally */
+}
+
 /* DATE NIGHT */
 .bot-msg {
     margin-top: 20px;
@@ -127,27 +183,19 @@ button:hover,
 
 .date-night-wrapper {
     position: relative;
-    /* allows absolute positioning inside */
     width: 533.333px;
-    /* adjust to your background/frame size */
     height: 360px;
-    /* adjust to your background/frame size */
     margin: 0 auto;
     /* center on page */
 }
 
-/* Video goes behind the frame */
 #camera {
     position: absolute;
     top: 50%;
-    /* adjust to align inside frame */
     left: 30%;
-    /* adjust to align inside frame */
     transform: translate(-50%, -40%);
     width: 200px;
-    /* resize to fit the frame */
     height: 180px;
-    /* resize to fit the frame */
     object-fit: cover;
     /* fills the video box without stretching */
     z-index: 1;
@@ -162,19 +210,111 @@ button:hover,
     transform: translate(-51%, -50%);
     /* centers the image */
     width: auto;
-    /* preserves original aspect ratio */
     height: 100%;
-    /* scale height to container */
     pointer-events: none;
     z-index: 2;
 }
 
-/* === Universal Menu Styling === */
+/* LOVE METER */
+.meter-container {
+    margin-top: 20px;
+}
+
+.meter {
+    margin: 12px 0;
+    font-size: 1rem;
+    background: #ffe1ef;
+    border-radius: 12px;
+    padding: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.meter-fill {
+    height: 24px;
+    width: 0%;
+    background: #e84393;
+    border-radius: 12px;
+    transition: width 1s ease;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #e84393;
+    font-size: 1rem;
+    margin-right: 12px;
+}
+
+.next-btn {
+    margin-top: 20px;
+    display: none;
+}
+
+/* THE PROPOSAL */
+.proposal-msg {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: #e84393;
+}
+
+.listen-btn {
+    margin-top: 20px;
+}
+
+.status {
+    margin-top: 12px;
+    font-size: 1rem;
+    color: #7a7a7a;
+}
+
+/* THE WEDDING */
+.wedding-msg {
+    text-align: center;
+    margin-top: 20px;
+    color: #e84393;
+}
+
+.wedding-vow {
+    text-align: left;
+    margin-top: 20px;
+    color: #000000;
+}
+
+.btn-row {
+    text-align: center;
+}
+
+#signature-pad {
+    border: 2px solid #e84393;
+    border-radius: 12px;
+    margin: 20px auto;
+    display: none;
+    touch-action: none;
+    cursor: crosshair;
+}
+
+.confirm-btn {
+    display: none;
+    margin-top: 12px;
+}
+
+/* PRONOUNCEMENT */
+.final-msg {
+    text-align: center;
+    color: #e84393;
+}
+
+/* HAM MENU STYLING */
 .menu {
     position: fixed;
     top: 10px;
     left: 10px;
-    /* stays stuck to the left */
     z-index: 9999;
 }
 
@@ -192,7 +332,6 @@ button:hover,
     border-radius: 10px;
     cursor: pointer;
     font-size: 1.2rem;
-    /* bigger if you like */
 }
 
 #menuList {
@@ -206,7 +345,6 @@ button:hover,
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     text-align: left;
-    /* menu links aligned left */
 }
 
 #menuList li {
